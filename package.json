@@ -16,7 +16,8 @@
 		"e2e:test:ios": "detox test -c ios.sim.debug",
 		"e2e:test:android": "detox test -c android.emu.debug",
 		"e2e:test-release:ios": "detox test -c ios.sim.release",
-		"e2e:test-release:android": "detox test -c android.emu.release"
+		"e2e:test-release:android": "detox test -c android.emu.release",
+		"utils:prepareContactsData": "node ./scripts/prepareContactsData.js"
 	},
 	"husky": {
 		"hooks": {
@@ -55,6 +56,7 @@
 		"@typescript-eslint/parser": "^2.27.0",
 		"babel-jest": "^25.1.0",
 		"eslint": "^6.5.1",
+		"faker": "^5.1.0",
 		"husky": "^4.2.3",
 		"jest": "^25.1.0",
 		"lint-staged": "^10.0.8",
