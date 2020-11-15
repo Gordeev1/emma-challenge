@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import ContactsLinkedSnapLists from '@modules/Contacts/ContactsLinkedSnapLists';
+import Loader from '@components/Loader';
 import ContactsService from '@services/contacts';
 import { IContact } from '@LTypes/contact';
 import { handleError, showErrorMessage } from '@utils/error';
 
 export default () => {
-	// TODO: handle loading state
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [loading, setLoading] = useState(false);
 	const [data, setData] = useState<IContact[]>([]);
 
@@ -26,6 +25,10 @@ export default () => {
 	useEffect(() => {
 		load();
 	}, [load]);
+
+	if (loading) {
+		return <Loader padding={50} />;
+	}
 
 	return <ContactsLinkedSnapLists data={data} />;
 };
