@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { ViewStyle, View } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { useLinkedSnapLists, IUseLinkedSnapListsPayload } from './useLinkedSnapLists';
@@ -9,7 +9,7 @@ import {
 	HorizontalItemContainer,
 } from './styled';
 
-export type IRenderLinkedSnapListItemPayload<T> = T &
+export type IRenderLinkedSnapListItemPayload<T = {}> = T &
 	Pick<IUseLinkedSnapListsPayload, 'transX' | 'scrollToIndex'>;
 
 interface IProps<T> {
@@ -29,6 +29,12 @@ interface IProps<T> {
 	horizontalListContentContainerStyle?: ViewStyle;
 	verticalListStyle?: ViewStyle;
 	verticalListContentContainerStyle?: ViewStyle;
+	UNSAFE_renderHorizontalListChildren?: (
+		payload: IRenderLinkedSnapListItemPayload,
+	) => JSX.Element | null;
+	UNSAFE_renderVerticalListChildren?: (
+		payload: IRenderLinkedSnapListItemPayload,
+	) => JSX.Element | null;
 }
 
 export default function LinkedSnapLists<T>({
@@ -42,6 +48,8 @@ export default function LinkedSnapLists<T>({
 	horizontalListContentContainerStyle,
 	verticalListStyle,
 	verticalListContentContainerStyle,
+	UNSAFE_renderHorizontalListChildren,
+	UNSAFE_renderVerticalListChildren,
 }: IProps<T>) {
 	const {
 		horizontalListRef,
@@ -54,6 +62,14 @@ export default function LinkedSnapLists<T>({
 		verticalItemHeight,
 		horizontalItemWidth,
 	});
+
+	useEffect(() => {
+		if (UNSAFE_renderHorizontalListChildren || UNSAFE_renderVerticalListChildren) {
+			console.log(
+				"Please use 'UNSAFE_renderHorizontalListChildren' / 'UNSAFE_renderVerticalListChildren' with absolute position only, otherwise, it may break the layout",
+			);
+		}
+	}, [UNSAFE_renderHorizontalListChildren, UNSAFE_renderVerticalListChildren]);
 
 	const horizontalItemStyles = useAnimatedStyle(() => ({ width: horizontalItemWidth.value }));
 
@@ -90,6 +106,8 @@ export default function LinkedSnapLists<T>({
 				style={horizontalListStyle}
 				containerStyle={horizontalListContentContainerStyle}
 			>
+				{UNSAFE_renderHorizontalListChildren &&
+					UNSAFE_renderHorizontalListChildren({ transX, scrollToIndex })}
 				{data.map(_renderHorizontalListItem)}
 			</HorizontalList>
 			<VerticalList
@@ -101,6 +119,8 @@ export default function LinkedSnapLists<T>({
 				style={[{ height: verticalItemHeight.value }, verticalListStyle]}
 				containerStyle={verticalListContentContainerStyle}
 			>
+				{UNSAFE_renderVerticalListChildren &&
+					UNSAFE_renderVerticalListChildren({ transX, scrollToIndex })}
 				{data.map(_renderVerticalListItem)}
 			</VerticalList>
 		</View>
