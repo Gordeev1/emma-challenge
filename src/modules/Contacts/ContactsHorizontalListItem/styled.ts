@@ -1,21 +1,20 @@
-import Animated from 'react-native-reanimated';
+import { Image, View } from 'react-native';
 import styled from '@utils/styled-components';
 
-const avatarSze = 75;
+export const contactAvatarSize = 75;
 const avatarMargin = 15;
-export const contactsHorizontalListItemSize = avatarSze + avatarMargin;
+export const contactsHorizontalListItemSize = contactAvatarSize + avatarMargin;
 
-export const Container = styled(Animated.View)`
-	width: ${avatarSze};
-	height: ${avatarSze};
-	border-radius: ${avatarSze};
+export const Container = styled(View)`
+	width: ${contactAvatarSize};
+	height: ${contactAvatarSize};
+	border-radius: ${contactAvatarSize};
 	margin-horizontal: ${avatarMargin / 2};
-	border-color: ${(p) => p.theme.colors.accent};
 `;
 
-export const Avatar = styled(Animated.Image)`
+export const Avatar = styled(Image)`
 	width: 100%;
 	height: 100%;
 	resize-mode: contain;
-	border-radius: ${avatarSze};
+	border-radius: ${contactAvatarSize};
 `;

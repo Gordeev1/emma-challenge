@@ -3,6 +3,7 @@ import { useSharedValue } from 'react-native-reanimated';
 import { HeaderHeightContext } from '@react-navigation/stack';
 import { IRenderLinkedSnapListItemPayload } from '@components/LinkedSnapLists';
 import ContactsHorizontalListItem from '@modules/Contacts/ContactsHorizontalListItem';
+import ContactsHorizontalListItemHighlight from '@modules/Contacts/ContactsHorizontalListItemHighlight';
 import ContactsVerticalListItem from '@modules/Contacts/ContactsVerticalListItem';
 import { contactsHorizontalListItemSize } from '@modules/Contacts/ContactsHorizontalListItem/styled';
 import { ThemeContext } from '@utils/styled-components';
@@ -34,8 +35,15 @@ export default (props: IProps) => {
 	const horizontalItemWidth = useSharedValue(contactsHorizontalListItemSize);
 
 	const renderHorizontalListItem = useCallback(
-		({ scrollToIndex, ...item }: IRenderLinkedSnapListItemPayload<IContact>, index: number) => (
-			<ContactsHorizontalListItem index={index} {...item} onPress={scrollToIndex} />
+		({ scrollToIndex, avatar }: IRenderLinkedSnapListItemPayload<IContact>, index: number) => (
+			<ContactsHorizontalListItem index={index} avatar={avatar} onPress={scrollToIndex} />
+		),
+		[],
+	);
+
+	const renderHorizontalListItemHighlight = useCallback(
+		({ transX }: IRenderLinkedSnapListItemPayload) => (
+			<ContactsHorizontalListItemHighlight transX={transX} />
 		),
 		[],
 	);
@@ -53,6 +61,7 @@ export default (props: IProps) => {
 			verticalItemHeight={verticalItemHeight}
 			horizontalItemWidth={horizontalItemWidth}
 			renderHorizontalListItem={renderHorizontalListItem}
+			UNSAFE_renderHorizontalListChildren={renderHorizontalListItemHighlight}
 			renderVerticalListItem={renderVerticalListItem}
 			{...props}
 		/>

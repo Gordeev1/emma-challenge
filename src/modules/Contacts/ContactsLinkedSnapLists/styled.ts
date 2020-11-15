@@ -6,5 +6,6 @@ export const horizontalListVerticalPadding = 20;
 export const ConfiguredLinkedSnapLists = styled(LinkedSnapLists).attrs({
 	horizontalListContentContainerStyle: {
 		paddingVertical: horizontalListVerticalPadding,
+		alignItems: 'center',
 	},
 })`` as typeof LinkedSnapLists;
