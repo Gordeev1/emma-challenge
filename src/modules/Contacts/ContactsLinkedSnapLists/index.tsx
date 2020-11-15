@@ -27,7 +27,7 @@ export default (props: IProps) => {
 		windowSize.height -
 			navigationHeaderHeight -
 			contactsHorizontalListItemSize -
-			horizontalListVerticalPadding,
+			horizontalListVerticalPadding * 2,
 	);
 	const horizontalItemWidth = useSharedValue(contactsHorizontalListItemSize);
 
