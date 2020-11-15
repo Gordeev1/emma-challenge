@@ -1,7 +1,7 @@
 import Animated from 'react-native-reanimated';
 import styled from '@utils/styled-components';
 
-const avatarSze = 80;
+const avatarSze = 75;
 const avatarMargin = 15;
 export const contactsHorizontalListItemSize = avatarSze + avatarMargin;
 
