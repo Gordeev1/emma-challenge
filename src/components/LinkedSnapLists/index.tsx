@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { ViewStyle } from 'react-native';
+import { ViewStyle, View } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { useLinkedSnapLists, IUseLinkedSnapListsPayload } from './useLinkedSnapLists';
 import {
@@ -78,7 +78,7 @@ export default function LinkedSnapLists<T>({
 	);
 
 	return (
-		<>
+		<View>
 			<HorizontalList
 				ref={horizontalListRef}
 				scrollEventThrottle={1}
@@ -98,11 +98,11 @@ export default function LinkedSnapLists<T>({
 				snapToInterval={verticalItemHeight.value}
 				decelerationRate="fast"
 				onScroll={verticalScrollHandler}
-				style={verticalListStyle}
+				style={[{ height: verticalItemHeight.value }, verticalListStyle]}
 				containerStyle={verticalListContentContainerStyle}
 			>
 				{data.map(_renderVerticalListItem)}
 			</VerticalList>
-		</>
+		</View>
 	);
 }

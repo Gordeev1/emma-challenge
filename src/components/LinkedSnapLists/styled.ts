@@ -12,7 +12,6 @@ interface IHorizontalListProps extends ICommonProps {
 
 export const HorizontalList = styled(Animated.ScrollView).attrs<IHorizontalListProps>((p) => ({
 	contentContainerStyle: {
-		alignItems: 'center',
 		paddingHorizontal: p.theme.windowSize.width / 2 - p.itemWidth / 2,
 		...(p.containerStyle || {}),
 	} as StyleProp<ViewStyle>,
