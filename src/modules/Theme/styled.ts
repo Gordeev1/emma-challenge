@@ -6,13 +6,13 @@ import { THEME } from './enums';
 const colors = {
 	white: '#fff',
 	black: '#000',
-	border: 'rgb(201, 222, 244)',
+	border: 'rgba(201, 222, 244, 0.5)',
+	fontMain: '#1f1f1f',
+	fontSecondary: '#969696',
+	accent: '#c3dbef',
 };
 
-const fonts = {
-	main: 'Roboto',
-	mainBold: 'Roboto Bold',
-};
+const fonts = {};
 
 export const baseTheme = {
 	colors,
