@@ -1,19 +1,17 @@
-import React, { memo, useContext } from 'react';
+import React, { memo } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { contactsHorizontalListItemSize } from '@modules/Contacts/ContactsHorizontalListItem/styled';
-import { ThemeContext } from '@utils/styled-components';
 import { Highlight, highlightSize } from './styled';
 
 interface IProps {
 	transX: Animated.SharedValue<number>;
+	windowWidth: number;
 }
 
-export default memo(({ transX }: IProps) => {
-	const { windowSize } = useContext(ThemeContext);
-
+export default memo(({ transX, windowWidth }: IProps) => {
 	const style = useAnimatedStyle<StyleProp<ViewStyle>>(() => {
-		const center = windowSize.width / 2 - highlightSize / 2;
+		const center = windowWidth / 2 - highlightSize / 2;
 		const activeIndex = Math.round(transX.value / contactsHorizontalListItemSize);
 		return {
 			transform: [
@@ -22,7 +20,7 @@ export default memo(({ transX }: IProps) => {
 				},
 			],
 		};
-	}, [transX.value, windowSize.width]);
+	}, [transX.value, windowWidth]);
 
 	return <Highlight style={style} />;
 });
