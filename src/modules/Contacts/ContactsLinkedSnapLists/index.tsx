@@ -24,10 +24,12 @@ export default (props: IProps) => {
 	 * https://docs.swmansion.com/react-native-reanimated/docs/api/nativeMethods/measure
 	 */
 	const verticalItemHeight = useSharedValue(
-		windowSize.height -
-			navigationHeaderHeight -
-			contactsHorizontalListItemSize -
-			horizontalListVerticalPadding * 2,
+		Math.round(
+			windowSize.height -
+				navigationHeaderHeight -
+				contactsHorizontalListItemSize -
+				horizontalListVerticalPadding * 2,
+		),
 	);
 	const horizontalItemWidth = useSharedValue(contactsHorizontalListItemSize);
 
