@@ -1,5 +1,4 @@
 import { Alert } from 'react-native';
-import { translate } from '@i18n';
 import { isProductionBuild } from '@constants';
 
 export function handleError(error: Error | string, label?: string) {
@@ -21,8 +20,12 @@ export function showErrorMessage({ message, error, onRetryPress }: IShowErrorMes
 	const actions = [];
 
 	if (onRetryPress) {
-		actions.push({ text: translate('errorAlert.retryBtnLabel'), onPress: onRetryPress });
+		actions.push({ text: 'Retry', onPress: onRetryPress });
 	}
 
-	return Alert.alert(translate('errors.general'), message || JSON.stringify(error), actions);
+	return Alert.alert(
+		'Error has occurred',
+		message || JSON.stringify(error),
+		actions.length > 0 ? actions : undefined,
+	);
 }
