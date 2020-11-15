@@ -1,8 +1,8 @@
 import { Image, View } from 'react-native';
 import styled from '@utils/styled-components';
 
-export const contactAvatarSize = 75;
-const avatarMargin = 15;
+export const contactAvatarSize = 70;
+const avatarMargin = 20;
 export const contactsHorizontalListItemSize = contactAvatarSize + avatarMargin;
 
 export const Container = styled(View)`
