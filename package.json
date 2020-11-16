@@ -88,14 +88,14 @@
 		"specs": "e2e",
 		"configurations": {
 			"ios.sim.debug": {
-				"binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/MovingPictures.app",
-				"build": "xcodebuild -workspace ios/MovingPictures.xcworkspace -scheme MovingPictures -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build EXCLUDED_ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -quiet",
+				"binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/EmmaChallenge.app",
+				"build": "xcodebuild -workspace ios/EmmaChallenge.xcworkspace -scheme EmmaChallenge -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build EXCLUDED_ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -quiet",
 				"type": "ios.simulator",
 				"name": "iPhone 11 Pro Max"
 			},
 			"ios.sim.release": {
-				"binaryPath": "ios/build/Build/Products/Release-iphonesimulator/MovingPictures.app",
-				"build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/MovingPictures.xcworkspace -scheme MovingPictures -configuration Release -sdk iphonesimulator -derivedDataPath ios/build ONLY_ACTIVE_ARCH=YES -quiet",
+				"binaryPath": "ios/build/Build/Products/Release-iphonesimulator/EmmaChallenge.app",
+				"build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/EmmaChallenge.xcworkspace -scheme EmmaChallenge -configuration Release -sdk iphonesimulator -derivedDataPath ios/build ONLY_ACTIVE_ARCH=YES -quiet",
 				"type": "ios.simulator",
 				"name": "iPhone 11 Pro Max"
 			},
