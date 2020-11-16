@@ -36,7 +36,12 @@ export default (props: IProps) => {
 
 	const renderHorizontalListItem = useCallback(
 		({ scrollToIndex, avatar }: IRenderLinkedSnapListItemPayload<IContact>, index: number) => (
-			<ContactsHorizontalListItem index={index} avatar={avatar} onPress={scrollToIndex} />
+			<ContactsHorizontalListItem
+				testID={`contacts.horizontalListItem-${index + 1}`}
+				index={index}
+				avatar={avatar}
+				onPress={scrollToIndex}
+			/>
 		),
 		[],
 	);
@@ -49,14 +54,21 @@ export default (props: IProps) => {
 	);
 
 	const renderVerticalListItem = useCallback(
-		({ name, role, about }: IRenderLinkedSnapListItemPayload<IContact>) => (
-			<ContactsVerticalListItem name={name} role={role} about={about} />
+		({ name, role, about }: IRenderLinkedSnapListItemPayload<IContact>, index: number) => (
+			<ContactsVerticalListItem
+				testID={`contacts.verticalListItem-${index + 1}`}
+				name={name}
+				role={role}
+				about={about}
+			/>
 		),
 		[],
 	);
 
 	return (
 		<ConfiguredLinkedSnapLists<IContact>
+			horizontalListTestID="contacts.horizontalList"
+			verticalListTestID="contacts.verticalList"
 			keyExtractor={keyExtractor}
 			verticalItemHeight={verticalItemHeight}
 			horizontalItemWidth={horizontalItemWidth}

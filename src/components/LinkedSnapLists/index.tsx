@@ -35,6 +35,8 @@ interface IProps<T> {
 	UNSAFE_renderVerticalListChildren?: (
 		payload: IRenderLinkedSnapListItemPayload,
 	) => JSX.Element | null;
+	verticalListTestID?: string;
+	horizontalListTestID?: string;
 }
 
 export default function LinkedSnapLists<T>({
@@ -50,6 +52,8 @@ export default function LinkedSnapLists<T>({
 	verticalListContentContainerStyle,
 	UNSAFE_renderHorizontalListChildren,
 	UNSAFE_renderVerticalListChildren,
+	verticalListTestID,
+	horizontalListTestID,
 }: IProps<T>) {
 	const {
 		horizontalListRef,
@@ -96,6 +100,7 @@ export default function LinkedSnapLists<T>({
 	return (
 		<View>
 			<HorizontalList
+				testID={horizontalListTestID}
 				ref={horizontalListRef}
 				scrollEventThrottle={1}
 				horizontal
@@ -111,6 +116,7 @@ export default function LinkedSnapLists<T>({
 				{data.map(_renderHorizontalListItem)}
 			</HorizontalList>
 			<VerticalList
+				testID={verticalListTestID}
 				ref={verticalListRef}
 				scrollEventThrottle={1}
 				snapToInterval={verticalItemHeight.value}
