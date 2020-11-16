@@ -8,8 +8,8 @@
 -   Install project dependencies
 
 ```
-    npm i
-    npx pod-install
+npm i
+npx pod-install
 ```
 
 ## E2E testing
@@ -20,25 +20,21 @@
 -   Prepare build for test
 
 ```
-
 // Debug
 npm run e2e:build:ios
 
 // Release
 npm run e2e:build-release:ios
-
 ```
 
 -   Run tests
 
 ```
-
 // Debug
 npm run e2e:test:ios
 
 // Release
 npm run e2e:test-release:ios
-
 ```
 
 ## Others commands
