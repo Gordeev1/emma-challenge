@@ -1,5 +1,7 @@
 # Emma Challenge
 
+[![Preview](./data/preview.png)](https://drive.google.com/file/d/1W-DrUplnbCX8PVIumAkX7I7oBPXyMEJE/view)
+
 ## Setup
 
 -   Make sure you have [React Native setup](https://reactnative.dev/docs/environment-setup)
@@ -54,7 +56,7 @@ npm run e2e:test-release:ios
 
 -   [LinkedSnapLists](./src/components/LinkedSnapLists/README.md)
 
-The solution based on [react-native-reanimated v2](https://docs.swmansion.com/react-native-reanimated/), which is still in alpha version and would not be sutable for all apps because it [`TurboModules`](https://github.com/react-native-community/discussions-and-proposals/issues/40) and `Hermes` enabled.
+The solution based on [react-native-reanimated v2](https://docs.swmansion.com/react-native-reanimated/), which is still in alpha version and would not be sutable for all apps because it requires [`TurboModules`](https://github.com/react-native-community/discussions-and-proposals/issues/40) and `Hermes` enabled.
 
 But the architecture of the new version allowing us (using `TurboModules`) to call native methods (such as `scrollTo` on `ScrollView`) without crossing the bridge, which gives a great performance boost and perfectly matched the needs for this task.
 
