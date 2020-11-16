@@ -7,12 +7,16 @@ import { Highlight, highlightSize } from './styled';
 interface IProps {
 	transX: Animated.SharedValue<number>;
 	windowWidth: number;
+	lastIndex: number;
 }
 
-export default memo(({ transX, windowWidth }: IProps) => {
+export default memo(({ transX, windowWidth, lastIndex }: IProps) => {
 	const style = useAnimatedStyle<StyleProp<ViewStyle>>(() => {
 		const center = windowWidth / 2 - highlightSize / 2;
-		const activeIndex = Math.round(transX.value / contactsHorizontalListItemSize);
+		const activeIndex = Math.min(
+			Math.max(Math.round(transX.value / contactsHorizontalListItemSize), 0),
+			lastIndex,
+		);
 		return {
 			transform: [
 				{

@@ -48,9 +48,13 @@ export default (props: IProps) => {
 
 	const renderHorizontalListItemHighlight = useCallback(
 		({ transX }: IRenderLinkedSnapListItemPayload) => (
-			<ContactsHorizontalListItemHighlight windowWidth={windowSize.width} transX={transX} />
+			<ContactsHorizontalListItemHighlight
+				windowWidth={windowSize.width}
+				transX={transX}
+				lastIndex={props.data.length - 1}
+			/>
 		),
-		[windowSize.width],
+		[windowSize.width, props.data.length],
 	);
 
 	const renderVerticalListItem = useCallback(
