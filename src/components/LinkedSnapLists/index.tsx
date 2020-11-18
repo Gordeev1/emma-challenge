@@ -86,15 +86,15 @@ export default function LinkedSnapLists<T>({
 		[keyExtractor, renderHorizontalListItem, horizontalItemStyles, scrollToIndex, transX],
 	);
 
-	const verticalItemStyles = useAnimatedStyle(() => ({ height: verticalItemHeight.value }));
+	const verticalItemHeightStyle = useAnimatedStyle(() => ({ height: verticalItemHeight.value }));
 
 	const _renderVerticalListItem = useCallback(
 		(item: T, index: number) => (
-			<VerticalItemContainer key={keyExtractor(item)} style={verticalItemStyles}>
+			<VerticalItemContainer key={keyExtractor(item)} style={verticalItemHeightStyle}>
 				{renderVerticalListItem({ ...item, transX, scrollToIndex }, index)}
 			</VerticalItemContainer>
 		),
-		[keyExtractor, renderVerticalListItem, verticalItemStyles, scrollToIndex, transX],
+		[keyExtractor, renderVerticalListItem, verticalItemHeightStyle, scrollToIndex, transX],
 	);
 
 	return (
@@ -122,7 +122,7 @@ export default function LinkedSnapLists<T>({
 				snapToInterval={verticalItemHeight.value}
 				decelerationRate="fast"
 				onScroll={verticalScrollHandler}
-				style={[{ height: verticalItemHeight.value }, verticalListStyle]}
+				style={[verticalItemHeightStyle, verticalListStyle]}
 				containerStyle={verticalListContentContainerStyle}
 			>
 				{UNSAFE_renderVerticalListChildren &&
